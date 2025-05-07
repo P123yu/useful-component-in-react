@@ -1,0 +1,269 @@
+
+// ================================================================================= DROPDOWN
+
+// simple dropdown
+
+import React, { useState } from "react";
+
+function Dropdown() {
+  const [dropdown, setDropdown] = useState("");
+
+  const handleChange = (e) => {
+    const value = e.target.value;
+    setDropdown(value);
+    console.log(value, "dropdown");
+  };
+
+  return (
+    <div>
+      <select value={dropdown} onChange={handleChange}>
+        <option value="" disabled>
+          select
+        </option>
+        <option value="java">Java</option>
+        <option value="python">Python</option>
+      </select>
+    </div>
+  );
+}
+
+export default Dropdown;
+
+
+
+
+
+
+// with tailwind css =========================
+
+
+
+import React, { useState } from "react";
+
+function Dropdown() {
+  const [dropdown, setDropdown] = useState("");
+
+  const handleChange = (e) => {
+    const value = e.target.value;
+    setDropdown(value);
+    console.log(value, "dropdown");
+  };
+
+  return (
+    <div>
+      <select
+        value={dropdown}
+        onChange={handleChange}
+        className="outline-none border-2 border-blue-900 p-2"
+      >
+        <option value="" disabled>
+          select
+        </option>
+        <option value="java">Java</option>
+        <option value="python">Python</option>
+      </select>
+    </div>
+  );
+}
+
+export default Dropdown;
+
+
+// ============================================================================= MODAL 
+
+
+// flex items-center justify-center  this is used for do modal in center
+
+import React, { useState } from "react";
+
+function Modals() {
+  const [open, setOpen] = useState(null);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  return (
+    <div className="p-20">
+      <button onClick={handleOpen}>Show</button>
+      {open ? (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-blue-500 bg-opacity-50">
+          <div className="bg-yellow-400 p-10">
+            <p>Hello</p>
+            <button onClick={handleClose}>Close</button>
+          </div>
+        </div>
+      ) : (
+        ""
+      )}
+    </div>
+  );
+}
+
+export default Modals;
+
+
+// ========================================================== LEFT SIDE DIV SCOLLABLE 
+
+
+// tricks
+
+// apply on parent div
+h-screen overflow-hidden
+
+// apply on the section which you want to make scrollable
+overflow-y-auto
+
+
+
+// 1. using grid 
+
+
+import React from "react";
+
+function LeftSideScrollable() {
+  return (
+    <div>
+      <div className="grid grid-cols-2 h-screen overflow-hidden">
+        {/* scrollable */}
+        <div className="col-span-1 bg-blue-900 overflow-y-auto pt-[1000px]">
+          A
+        </div>
+
+        {/* fixed */}
+        <div className="col-span-1 bg-yellow-500">B</div>
+      </div>
+    </div>
+  );
+}
+
+export default LeftSideScrollable;
+
+
+
+// 2. using flex 
+
+import React from "react";
+
+function LeftSideScrollable() {
+  return (
+    <div>
+      <div className="flex  h-screen overflow-hidden">
+        {/* scrollable */}
+        <div className=" bg-blue-900 overflow-y-auto pt-[1000px] w-full">A</div>
+
+        {/* fixed */}
+        <div className="bg-yellow-500 w-full">B</div>
+      </div>
+    </div>
+  );
+}
+
+export default LeftSideScrollable;
+
+
+// ================================================================  HOW TO MAKE ANY THING CENTER IN REACT W.R.T ROW,COL,ROW+COL
+
+
+// for making any thing center in react just apply on parent flex justify-center   
+
+// note : justify is only able to work with flex with using flex justify is not work
+
+
+
+// row wise making div center
+
+import React from "react";
+
+function CenterDiv() {
+  return (
+    <div className="flex justify-center">
+      <div className="bg-blue-200 w-20">hello</div>
+    </div>
+  );
+}
+
+export default CenterDiv;
+
+// col wise making div center
+
+import React from "react";
+
+function CenterDiv() {
+  return (
+    <div className="flex flex-col justify-center h-screen">
+      <div className="bg-blue-200 w-20">hello</div>
+    </div>
+  );
+}
+
+export default CenterDiv;
+
+
+// for making center from row and col
+
+import React from "react";
+
+function CenterDiv() {
+  return (
+    <div className="flex items-center justify-center h-screen">
+      <div className="bg-blue-200 w-20">hello</div>
+    </div>
+  );
+}
+
+export default CenterDiv;
+
+
+// commonly used justify is 
+
+// justify-start
+// justify-end
+// justify-between
+// justify-around
+
+
+// ==================================================================== MAKE DIV FLOAT 
+
+
+
+
+// suppose i have two div parent and child and i want to push child div into last of parent div then in that case we can
+// use float-end or float-right which is applied on parent to push child div in last
+
+import React from "react";
+
+function FloatDiv() {
+  return (
+    <div className="bg-blue-900 float-end">
+      <div className="bg-red-200 w-[40px]">hello</div>
+    </div>
+  );
+}
+
+export default FloatDiv;
+
+
+
+// ==================================================================== AUTOFILL COLOR USING FLEX-GROW
+
+// here flex-grow will automatically fill the blue color upto height h-screen
+
+import React from "react";
+
+function AutofillColor() {
+  return (
+    <div className="flex flex-col h-screen">
+      <div className="bg-blue-200 flex-grow ">hello</div>
+    </div>
+  );
+}
+
+export default AutofillColor;
+
+
+
