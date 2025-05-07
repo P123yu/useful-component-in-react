@@ -266,4 +266,45 @@ function AutofillColor() {
 export default AutofillColor;
 
 
+// ================================================================== How to stop page refresh to persist data 
+
+// in this example we have input field initially input field is empty so if we are refreshing page it allow to refresh the 
+// page because initially there is no any data to loss but once if we write some thing inside the input filed say we write 
+// one letter in input field like "A" now we have data and we donot want to loose this data after page refreshing so now if
+// we refresh the page then it will persist the data unless we don't confirm to loose data 
+
+
+import React, { useEffect, useState } from "react";
+
+function PreventFromPageReload() {
+  const [text, setText] = useState("");
+
+  const handleChange = (e) => {
+    setText(e.target.value);
+  };
+
+  useEffect(() => {
+    const handleClose = (e) => {
+      if (text?.length >= 1) {
+        e.preventDefault();
+        e.returnValue = "";
+      }
+    };
+    window.addEventListener("beforeunload", handleClose);
+    return () => {
+      window.removeEventListener("beforeunload", handleClose);
+    };
+  }, [text]);
+
+  return (
+    <div>
+      <input type="text" onChange={handleChange} placeholder="enter" />
+    </div>
+  );
+}
+
+export default PreventFromPageReload;
+
+
+
 
