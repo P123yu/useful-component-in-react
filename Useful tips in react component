@@ -306,5 +306,60 @@ function PreventFromPageReload() {
 export default PreventFromPageReload;
 
 
+==================================================== MAKE SCOLLABLE WITH NAVHEAD============================================
+
+
+function LeftSideScrollable() {
+  return (
+    <div className="h-screen flex flex-col">
+      {/* Fixed Navbar */}
+      <div className="shrink-0">
+        <PracticeNormalHeader />
+      </div>
+
+      {/* Content Area: fills the rest of the screen */}
+      <div className="flex flex-1 overflow-hidden">
+        {/* Left Side: Scrollable */}
+        <div className="bg-blue-900 w-1/2 overflow-y-auto">
+          <div className="pt-[1000px] text-white p-4">A (scrollable)</div>
+        </div>
+
+        {/* Right Side: Static */}
+        <div className="bg-yellow-500 w-1/2 p-4">B (fixed)</div>
+      </div>
+    </div>
+  );
+}
+
+export default LeftSideScrollable;
+
+// =========================================================================================================
+
+function LeftSideScrollable() {
+  return (
+    <div className="h-screen grid grid-rows-[auto_1fr]">
+      {/* Fixed Navbar */}
+      <div className="row-span-1">
+        <PracticeNormalHeader />
+      </div>
+
+      {/* Grid Content Area */}
+      <div className="row-span-1 grid grid-cols-2 overflow-hidden">
+        {/* Left Side (Scrollable) */}
+        <div className="bg-blue-900 overflow-y-auto text-white p-4">
+          <div className="pt-[1000px]">A (scrollable)</div>
+        </div>
+
+        {/* Right Side (Static) */}
+        <div className="bg-yellow-500 p-4">B (fixed)</div>
+      </div>
+    </div>
+  );
+}
+
+export default LeftSideScrollable;
+
+
+
 
 
