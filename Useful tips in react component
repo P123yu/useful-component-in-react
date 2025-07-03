@@ -360,6 +360,32 @@ function LeftSideScrollable() {
 export default LeftSideScrollable;
 
 
+================================================================== MUST ========================================================================================
+
+<div className="h-screen grid grid-rows-[auto_1fr]">
+  {/* Fixed Header */}
+  <div className="sticky top-0 z-50 bg-white shadow">
+    <PracticeNormalHeader />
+  </div>
+
+  {/* Scrollable Grid Area */}
+  <div className="grid grid-cols-1 md:grid-cols-2 overflow-hidden">
+    {/* Left Panel - Scrollable */}
+    <div className="overflow-y-auto max-h-[calc(100vh-64px)] p-6 space-y-6 bg-gray-100">
+      {/* Your left side content goes here */}
+      ...
+    </div>
+
+    {/* Right Panel - Scrollable */}
+    <div className="overflow-y-auto max-h-[calc(100vh-64px)] p-6 bg-gray-100">
+      {/* Your right side content (code editor) */}
+      ...
+    </div>
+  </div>
+</div>
+
+
+
 
 
 
